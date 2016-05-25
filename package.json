@@ -1,0 +1,39 @@
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "private": true,
+  "main": "views/index.html",
+  "keywords": [
+    "Trireme",
+    "JDBC",
+    "Java",
+    "Database"
+  ],
+  "dependencies": {
+    "async": "~2.0.0-rc.5",
+    "connect-flash": "*",
+    "deferred": "^0.7.5",
+    "ejs": "~0.7.1",
+    "express": "~3.2.6",
+    "java": "^0.7.0",
+    "jdbc": "^0.3.1",
+    "lodash": "~4.12",
+    "mocha": "^2.5.3",
+    "moment": "*",
+    "mssql": "^3.2.1",
+    "mysql": "^2.10.2",
+    "node-java": "^1.0.1",
+    "node-uuid": "~1.4",
+    "nodemon": "^1.9.1",
+    "nodeunit": "^0.9.1",
+    "passport": "*",
+    "passport-http-bearer": "*",
+    "passport-local": "*",
+    "request": "^2.72.0",
+    "requirejs": "*",
+    "trireme": "^0.8.9",
+    "trireme-jdbc": "^1.0.1",
+    "trireme-support": "^1.0.0",
+    "winston": "^2.2.0"
+  }
+}
