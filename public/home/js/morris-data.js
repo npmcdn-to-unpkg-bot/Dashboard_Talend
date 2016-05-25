@@ -1,27 +1,25 @@
 
 $(function() {
 
-    Morris.Area({
-        element: 'morris-area-chart',
-        data: [
-            {  month: 'ENERO', last_year: 66520, current_year: 46440 },
-            {  month: 'FEBRERO', last_year: 57610, current_year: 47650 },
-            {  month: 'MARZO', last_year: 68765, current_year: 7674 },
-            {  month: 'ABRIL', last_year: 65875, current_year: 51444 },
-            {  month: 'MAYO', last_year: 8620, current_year: 7654 },
-            {  month: 'JUNIO', last_year: 82021, current_year: 4764 },
-            {  month: 'JULIO', last_year: 22340, current_year: 14654 },
-            {  month: 'AGOSTO', last_year: 54320, current_year: 65454 },
-            {  month: 'SEPTIEMBRE', last_year: 54320, current_year: 32154 },
-            {  month: 'OCTUBRE', last_year: 4320, current_year: 12354 },
-            {  month: 'NOVIEMBRE', last_year: 1220, current_year: 42154 },
-            {  month: 'DICIEMBRE', last_year: 7720, current_year: 12154 }
+    Morris.Bar({
+        element: 'morris-bar-chart-transaction', data: [
+            {  month: 'JAN.', last_year: 66520, current_year: 46440 },
+            {  month: 'FEB.', last_year: 57610, current_year: 47650 },
+            {  month: 'MAR.', last_year: 68765, current_year: 7674 },
+            {  month: 'APR.', last_year: 65875, current_year: 51444 },
+            {  month: 'MAY.', last_year: 8620, current_year: 7654 },
+            {  month: 'JUN.', last_year: 82021, current_year: 4764 },
+            {  month: 'JUL.', last_year: 22340, current_year: 14654 },
+            {  month: 'AUG.', last_year: 54320, current_year: 65454 },
+            {  month: 'SEPT.', last_year: 54320, current_year: 32154 },
+            {  month: 'OCT.', last_year: 4320, current_year: 12354 },
+            {  month: 'NOV.', last_year: 1240, current_year: 42154 },
+            {  month: 'DEC.', last_year: 7720, current_year: 12154 }
         ],
         xkey: 'month',
-        parseTime: false,
         ykeys: ['last_year', 'current_year'],
         labels: ['2015', '2016'],
-        pointSize: 2,
+        barColors: ["#08298A", "#FF4500"],     /* ["#08298A", "#FF4500"]   ["#01A9DB, "#DF013A"]*/
         hideHover: 'auto',
         resize: true
     });
