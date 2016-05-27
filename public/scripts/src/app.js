@@ -76,34 +76,36 @@ define([
                     controllerAs: 'vm',
                     resolve: {
                         data : function(Resolver,ResourceService){
-                            return Resolver([ResourceService.getTransactions(true)])
+                            return Resolver([ResourceService.getTransactions(true), ResourceService.getTransactionsLog(true),
+                                            ResourceService.getLastUpdate(true), ResourceService.getLastMonthsT(true),
+                                            ResourceService.getLastMonthsLN(true), ResourceService.getLastMonthsLK(true)])
                         }
                     },
                     access: { requiredLogin: false }
                 }).
-                when('/home', {
-                    templateUrl: 'partials/auth/home',
-                    controller: 'HomeCtrl',
-                    controllerAs: 'vm',
-                    resolve: {
-                        data : function(Resolver,ResourceService){
-                            return Resolver([ResourceService.getPeople(true),ResourceService.getThings(true)])
-                        }
-                    },
-                    access: { requiredLogin: true }
-                }).
-                when('/person', {
-                    templateUrl: 'partials/auth/person',
-                    controller: 'PersonCtrl',
-                    controllerAs: 'vm',
-                    access: { requiredLogin: true }
-                }).
-                when('/thing', {
-                    templateUrl: 'partials/auth/thing',
-                    controller: 'ThingCtrl',
-                    controllerAs: 'vm',
-                    access: { requiredLogin: true }
-                }).
+                // when('/home', {
+                //     templateUrl: 'partials/auth/home',
+                //     controller: 'HomeCtrl',
+                //     controllerAs: 'vm',
+                //     resolve: {
+                //         data : function(Resolver,ResourceService){
+                //             return Resolver([ResourceService.getPeople(true),ResourceService.getThings(true)])
+                //         }
+                //     },
+                //     access: { requiredLogin: true }
+                // }).
+                // when('/person', {
+                //     templateUrl: 'partials/auth/person',
+                //     controller: 'PersonCtrl',
+                //     controllerAs: 'vm',
+                //     access: { requiredLogin: true }
+                // }).
+                // when('/thing', {
+                //     templateUrl: 'partials/auth/thing',
+                //     controller: 'ThingCtrl',
+                //     controllerAs: 'vm',
+                //     access: { requiredLogin: true }
+                // }).
                 otherwise({
                     redirectTo: '/login'
                 });

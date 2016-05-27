@@ -6,43 +6,24 @@ module.exports = function(app, passport, netsuite, aurora) {
         res.render('index');
     });
 
+    app.post('/api/login', showClientRequest, api.login);
+
     app.get('/api/transactions', showClientRequest, api.getTransactions);
+
+    app.get('/api/transactions_log', showClientRequest, api.getTransactionsLog);
+
+    app.get('/api/last_update', showClientRequest, api.getLastUpdate);
+
+    app.get('/api/last_monthsT', showClientRequest, api.getLastMonthsT);
+
+    app.get('/api/last_monthsLN', showClientRequest, api.getLastMonthsLN);
+
+    app.get('/api/last_monthsLK', showClientRequest, api.getLastMonthsLK);
 
     app.get('/partials/:name', showClientRequest, function (req, res) {
         var name = req.params.name;
         res.render('partials/' + name);
     });
-
-
-    // app.get('/api/logout', showClientRequest, passport.authenticate('local-authorization', {
-    //     session: false
-    // }),api.logout);
-
-    // app.get('/api/people', showClientRequest, passport.authenticate('local-authorization', {
-    //     session: false
-    // }),api.getPeople);
-
-
-
-    // app.delete('/api/person/:id', showClientRequest, passport.authenticate('local-authorization', {
-    //     session: false
-    // }),api.removePerson);
-
-    // app.get('/api/things', showClientRequest, passport.authenticate('local-authorization', {
-    //     session: false
-    // }),api.getThings);
-
-    // app.post('/api/thing', showClientRequest, passport.authenticate('local-authorization', {
-    //     session: false
-    // }),api.createThing);
-
-    // app.put('/api/thing/:id', showClientRequest, passport.authenticate('local-authorization', {
-    //     session: false
-    // }),api.updateThing);
-
-    // app.delete('/api/thing/:id', showClientRequest, passport.authenticate('local-authorization', {
-    //     session: false
-    // }),api.removeThing);
 
 
 

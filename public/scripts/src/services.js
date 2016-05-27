@@ -6,7 +6,7 @@ define(['angular'], function (angular) {
     myAppServices.service('ResourceService',['$q', '$http', ResourceService]);
     myAppServices.service('TokenInterceptor',['$q','$location','localStorageService', TokenInterceptor]);
     myAppServices.service('CryptoJSService',[CryptoJSService]);
-    // myAppServices.service('AuthenticationService',['localStorageService', AuthenticationService]);
+    //myAppServices.service('AuthenticationService',['localStorageService', AuthenticationService]);
 
 
     function Resolver($q)
@@ -54,33 +54,51 @@ define(['angular'], function (angular) {
             getTransactions : function(refresh){
                 return _promisesGetter('GET','/api/transactions', null, "transactions", refresh);
             },
-            getThings : function(refresh){
-                return _promisesGetter('GET','/api/things', null, "things", refresh);
+            getTransactionsLog : function(refresh){
+                return _promisesGetter('GET','/api/transactions_log', null, "transaction_log", refresh);
             },
-            createThing : function(thing){
-                return _ajaxRequest('POST', '/api/thing', thing, null);
+            getLastUpdate : function(refresh){
+                return _promisesGetter('GET','/api/last_update', null, "last_update", refresh);
             },
-            deleteThing : function(thing){
-                return _ajaxRequest('DELETE', '/api/thing/'+thing._id, null, null);
+            getLastMonthsT : function(refresh){
+                return _promisesGetter('GET','/api/last_monthsT', null, "last_months_t", refresh);
             },
-            createPerson : function(person){
-                return _ajaxRequest('POST', '/api/person', person, null);
+            getLastMonthsLN : function(refresh){
+                return _promisesGetter('GET','/api/last_monthsLN', null, "last_months_ln", refresh);
             },
-            deletePerson : function(person){
-                return _ajaxRequest('DELETE', '/api/person/'+person._id, null, null);
-            },
-            updateThing : function(thing){
-                return _ajaxRequest('PUT', '/api/thing/'+thing._id, {thing : thing}, null);
-            },
-            updatePerson: function(person){
-                return _ajaxRequest('PUT', '/api/person/'+person._id, {person : person}, null);
-            },
-            signup : function(user){
-                return _ajaxRequest('POST', '/api/signup', user, null);
+            getLastMonthsLK : function(refresh){
+                return _promisesGetter('GET','/api/last_monthsLK', null, "last_months_lk", refresh);
             },
             login : function(user){
                 return _ajaxRequest('POST', '/api/login', user, null);
+            },
+            signup : function(user){
+                return _ajaxRequest('POST', '/api/signup', user, null);
             }
+
+            // getThings : function(refresh){
+            //     return _promisesGetter('GET','/api/things', null, "things", refresh);
+            // },
+            // createThing : function(thing){
+            //     return _ajaxRequest('POST', '/api/thing', thing, null);
+            // },
+            // deleteThing : function(thing){
+            //     return _ajaxRequest('DELETE', '/api/thing/'+thing._id, null, null);
+            // },
+            // createPerson : function(person){
+            //     return _ajaxRequest('POST', '/api/person', person, null);
+            // },
+            // deletePerson : function(person){
+            //     return _ajaxRequest('DELETE', '/api/person/'+person._id, null, null);
+            // },
+            // updateThing : function(thing){
+            //     return _ajaxRequest('PUT', '/api/thing/'+thing._id, {thing : thing}, null);
+            // },
+            // updatePerson: function(person){
+            //     return _ajaxRequest('PUT', '/api/person/'+person._id, {person : person}, null);
+            // },
+
+
 
 
         }

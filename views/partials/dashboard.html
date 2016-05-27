@@ -39,79 +39,7 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="flot.html">Flot Charts</a>
-                                </li>
-                                <li>
-                                    <a href="morris.html">Morris.js Charts</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
-                        </li>
-                        <li>
-                            <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="panels-wells.html">Panels and Wells</a>
-                                </li>
-                                <li>
-                                    <a href="buttons.html">Buttons</a>
-                                </li>
-                                <li>
-                                    <a href="notifications.html">Notifications</a>
-                                </li>
-                                <li>
-                                    <a href="typography.html">Typography</a>
-                                </li>
-                                <li>
-                                    <a href="icons.html"> Icons</a>
-                                </li>
-                                <li>
-                                    <a href="grid.html">Grid</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Third Level <span class="fa arrow"></span></a>
-                                    <ul class="nav nav-third-level">
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                    </ul>
-                                    <!-- /.nav-third-level -->
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
+                            <a href="#/dashboard"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                     </ul>
                 </div>
@@ -133,18 +61,18 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <div class="row" ng-repeat="transaction in vm.transactions">
+                            <div class="row" >
                                 <center><h3>TRANSACTIONS</h3></center>
                                 <div class="col-xs-3">
                                     <i class="fa fa-list-alt fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">{{transaction}}</div>
+                                    <div class="huge">{{vm.transactions.transactions}}</div>
                                     
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a ng-click='vm.GraphicTransactions()'>
                             <div class="panel-footer">
                                 <span class="pull-left">View Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -162,12 +90,12 @@
                                     <i class="fa fa-tasks fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">1232132</div>
+                                    <div class="huge">{{vm.transactions.tlines}}</div>
                                     
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a ng-click='vm.GraphicLines()'>
                             <div class="panel-footer">
                                 <span class="pull-left">View Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -185,11 +113,11 @@
                                     <i class="fa fa-align-justify fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">1564784</div>
+                                    <div class="huge">{{vm.transactions.tlinks}}</div>
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a ng-click='vm.GraphicLinks()'>
                             <div class="panel-footer">
                                 <span class="pull-left">View Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -200,21 +128,52 @@
                 </div>
             </div>
             <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> TRANSACTIONS
+            <div class="row" >
+                <div ng-show='vm.graphicTran.show'>
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <i class="fa fa-bar-chart-o fa-fw"></i> TRANSACTIONS
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div id="morris-bar-transactions"></div>
+                            </div>
+                            <!-- /.panel-body -->
                         </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <div id="morris-bar-chart-transaction"></div>
-                        </div>
-                        <!-- /.panel-body -->
                     </div>
                 </div>
-                <div class="col-lg-8">
+                <div ng-show='vm.graphicLines.show'>
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <i class="fa fa-bar-chart-o fa-fw"></i> TRANSACTIONS LINES
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div id="morris-bar-lines"></div>
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                    </div>
+                </div>
 
+                <div ng-show='vm.graphicLinks.show'>
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <i class="fa fa-bar-chart-o fa-fw"></i> TRANSACTIONS LINKS
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div id="morris-bar-links"></div>
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-8">
                     <!-- /.panel -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -236,7 +195,7 @@
 
                 </div>
                 <!-- /.col-lg-8 -->
-                <div class="col-lg-4">
+                <div class="col-lg-4" ng-model="vm.last_update">
 
                     <div class="panel panel-primary">
                         <div class="panel-heading">
@@ -246,7 +205,7 @@
                                     <p>Last Update:</p>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <h4>2016-01-01 00:00:00</h4>
+                                    <h4>{{vm.last_update.transactions}}</h4>
                                 </div>
                             </div>
                         </div>
@@ -260,7 +219,7 @@
                                     <p>Last Update:</p>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <h4>2016-01-01 00:00:00</h4>
+                                    <h4>{{vm.last_update.liness}}</h4>
                                 </div>
                             </div>
                         </div>
@@ -274,7 +233,7 @@
                                     <p>Last Update:</p>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <h4>2016-01-01 00:00:00</h4>
+                                    <h4>{{vm.last_update.linkss}}</h4>
                                 </div>
                             </div>
                         </div>
@@ -293,7 +252,6 @@
                             </div>
                             <div class="panel-body">
                                 <div id="morris-donut-chart1"></div>
-                                <a href="#" class="btn btn-default btn-block">View Details</a>
                             </div>
                             <!-- /.panel-body -->
                         </div>
@@ -305,7 +263,6 @@
                             </div>
                             <div class="panel-body">
                                 <div id="morris-donut-chart2"></div>
-                                <a href="#" class="btn btn-default btn-block">View Details</a>
                             </div>
                             <!-- /.panel-body -->
                         </div>
@@ -317,7 +274,6 @@
                             </div>
                             <div class="panel-body">
                                 <div id="morris-donut-chart3"></div>
-                                <a href="#" class="btn btn-default btn-block">View Details</a>
                             </div>
                             <!-- /.panel-body -->
                         </div>
@@ -341,6 +297,6 @@
     <!-- jQuery -->
         <!-- Morris Charts JavaScript -->
     <script src="home/bower_components/morrisjs/morris.min.js"></script>
-    <script src="home/js/morris-data.js"></script>
+    <script src="scripts/src/graphic.js"></script>
 
 
