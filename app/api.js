@@ -2,21 +2,13 @@ var request = require('request');
 
 module.exports = function(aurora, netsuite){
 
-    // var User = models.user;
-    // var Person = models.person;
-    // var Thing = models.thing;
-
     return {
 
         login:function(req,res)
         {
-            if (!req.body.grant_type || !req.body.username || !req.body.password) {
-                loginResponse(res, {
-                    "error": "Invalid Params"
-                }, 400);
+            if (req.body.username != null && req.body.password != null) {
                 console.log('___________________________ LOGIN POST ____________________________');
                 console.log('___________________________________________________________________');
-            } else if (req.body.grant_type === 'password') {
                 var usr = req.body.username;
                 var psw = req.body.password;
                 var newurl = 'http://equipovision.com:4510/ServiceForMobile.asmx/LoginBeta?user=' + usr + '&password=' + psw;
@@ -26,16 +18,15 @@ module.exports = function(aurora, netsuite){
                         code: 200
                     };
                     if (!error && response.statusCode == 200) {
+                        var msg = JSON.parse(body);
                         try {
-                            var msg = JSON.parse(body)[0];
-                            if (msg.data) {
-                                console.log(msg);
+                            if (msg[0].userAttr != null) {
                                 serverRes.data = {
-                                    "access_token": msg.data,
-                                    "account_id": msg.userAttr.SimpleID,
-                                    "user_name": msg.userAttr.Name,
-                                    "user_fullname": msg.userAttr.usrFirstNameLastName,
-                                    "user_isAdmin": msg.userAttr.usrIsAdminClientUser
+                                    "access_token": msg[0].data,
+                                    "account_id": msg[0].userAttr.SimpleID,
+                                    "user_name": msg[0].userAttr.Name,
+                                    "user_fullname": msg[0].userAttr.usrFirstNameLastName,
+                                    "user_isAdmin": msg[0].userAttr.usrIsAdminClientUser
                                 };
                                 serverRes.code = 200;
                             } else {
@@ -62,22 +53,10 @@ module.exports = function(aurora, netsuite){
                         serverRes.code = 503;
                     }
 
-                    // serverRes.data = {
-                    //          "access_token": "BACKMOCKS",
-                    //          "account_id": "12478",
-                    //          "user_name": "BACK MOCKS",
-                    //          "user_fullname": "BACK MOCKS",
-                    //          "user_isAdmin": "BACK MOCKS"
-                    //      };
-                    // serverRes.code = 200;
-
-                    console.log('___________________________ LOGIN POST ____________________________');
-                    console.log('___________________________________________________________________');
+                    res.send(serverRes);
                 });
             } else {
-                loginResponse(res, {
-                    "error": "unsupported_grant_type"
-                }, 400);
+                res.send(500, {'message': "Insert username or password!"});
                 console.log('___________________________ LOGIN POST ____________________________');
                 console.log('___________________________________________________________________');
             }

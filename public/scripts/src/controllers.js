@@ -83,32 +83,28 @@ define(['angular'], function (angular) {
 
 
 
-    function LoginCtrl ($location, ResourceService)
+    function LoginCtrl ($location, ResourceService, CryptoJS, localStorageService, toastr)
     {
         var vm = this;
         vm.$location = $location;
         vm.ResourceService = ResourceService;
         vm.failed_login = "";
+        vm.toastr = toastr;
     }
 
     LoginCtrl.prototype.login = function()
     {
-        console.log("USERRRRRRRRRRRR: ", user);
         var vm = this;
-
         var user = {"username": vm.username, "password": vm.password};
 
-        console.log("USERRRRRRRRRRRR: ", user)
         if(vm.username!==undefined || vm.password !==undefined){
 
             vm.ResourceService.login(user).then(function(data){
-                vm.localStorageService.set("auth_token",data.auth_token);
-                vm.$location.path("/home");
-            },function(data, status) {
-                if(status===401){
-                    vm.toastr.error('Wrong username and/or password!');
+                console.log("DATOSSS: ", data)
+                if(data.code != 200){
+                    vm.toastr.error(data.data.error);
                 }else{
-                    vm.toastr.error(data);
+                    vm.$location.path("/dashboard");
                 }
             });
 
