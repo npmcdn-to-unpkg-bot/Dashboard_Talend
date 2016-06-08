@@ -10,6 +10,7 @@
 
     <title>Talend Dashboard</title>
 
+    <link rel="icon" href="/home/img/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" type="text/css" href="scripts/lib/angular-toastr/dist/angular-toastr.css" />
     <link rel="stylesheet" href="scripts/lib/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="css/app.css">
@@ -35,14 +36,13 @@
     <link href="home/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 
-
-
-
-
 </head>
 <body>
 
 
+    <div id="loading" style="display: none">
+        <center><img src="home/img/loading.gif" class="ajax-loader"/></center>
+    </div>
     <div id="app-container" ng-view></div>
 
     <script src="home/bower_components/raphael/raphael-min.js"></script>

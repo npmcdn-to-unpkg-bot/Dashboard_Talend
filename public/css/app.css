@@ -5,6 +5,52 @@
     border-radius: 0px;
 }
 
+#loading {  
+    position:absolute;
+    width:100%;
+    height:100%;
+    z-index:1000;
+    background-color: rgba(25, 87, 107, 0.6);
+    opacity: .8;
+ }
 
+ #loading2 {  
+    position:absolute;
+    z-index:1000;
+    opacity: .8;
+    background-color: rgba(25, 87, 107, 0.6);
+    width:100%;
+    height: 73px;
+ }
 
-  
+ #loading3 {  
+    position:absolute;
+    z-index:1000;
+    opacity: .8;
+    width:100%;
+    height: 73px;
+ }
+
+.ajax-loader {
+    margin-top: 15% ;  
+}
+
+.refresh{
+	background: linear-gradient(0deg, #105C69 30%, #379AAB 51%);
+	margin-bottom: 7px;
+	border-radius: 25px;
+    color: #fff;
+}
+
+.refresh:hover{
+	background: #093840;
+}
+
+.fa-2x {
+    font-size: 2em;
+    color: #fff;
+}
+
+.title-graph{
+    color: #006099;
+}

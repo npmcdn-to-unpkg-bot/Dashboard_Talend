@@ -1,55 +1,55 @@
-function graphic_months_tra(last_months_a){
+function graphicLastTran(last_months){
 
     Morris.Bar({
-        element: 'morris-bar-transactions',
+        element: 'morris-last-transactions',
         data: [{
-            month: last_months_a[11].mess,
-            a: last_months_a[11].cantidad,
-            b: last_months_a[11].cantidad
+            month: last_months[11].mess,
+            a: last_months[11].aurora,
+            b: last_months[11].netsuite
         }, {
-            month: last_months_a[10].mess,
-            a: last_months_a[10].cantidad,
-            b: last_months_a[10].cantidad
+            month: last_months[10].mess,
+            a: last_months[10].aurora,
+            b: last_months[10].netsuite
         }, {
-            month: last_months_a[9].mess,
-            a: last_months_a[9].cantidad,
-            b: last_months_a[9].cantidad
+            month: last_months[9].mess,
+            a: last_months[9].aurora,
+            b: last_months[9].netsuite
         }, { 
-            month: last_months_a[8].mess,
-            a: last_months_a[8].cantidad,
-            b: last_months_a[8].cantidad
+            month: last_months[8].mess,
+            a: last_months[8].aurora,
+            b: last_months[8].netsuite
         }, {
-            month: last_months_a[7].mess,
-            a: last_months_a[7].cantidad,
-            b: last_months_a[7].cantidad
+            month: last_months[7].mess,
+            a: last_months[7].aurora,
+            b: last_months[7].netsuite
         }, {
-            month: last_months_a[6].mess,
-            a: last_months_a[6].cantidad,
-            b: last_months_a[6].cantidad
+            month: last_months[6].mess,
+            a: last_months[6].aurora,
+            b: last_months[6].netsuite
         }, { 
-            month: last_months_a[5].mess,
-            a: last_months_a[5].cantidad,
-            b: last_months_a[5].cantidad
+            month: last_months[5].mess,
+            a: last_months[5].aurora,
+            b: last_months[5].netsuite
         }, {
-            month: last_months_a[4].mess,
-            a: last_months_a[4].cantidad,
-            b: last_months_a[4].cantidad
+            month: last_months[4].mess,
+            a: last_months[4].aurora,
+            b: last_months[4].netsuite
         }, {
-            month: last_months_a[3].mess,
-            a: last_months_a[3].cantidad,
-            b: last_months_a[3].cantidad
+            month: last_months[3].mess,
+            a: last_months[3].aurora,
+            b: last_months[3].netsuite
         }, {
-            month: last_months_a[2].mess,
-            a: last_months_a[2].cantidad,
-            b: last_months_a[2].cantidad
+            month: last_months[2].mess,
+            a: last_months[2].aurora,
+            b: last_months[2].netsuite
         }, {
-            month: last_months_a[1].mess,
-            a: last_months_a[1].cantidad,
-            b: last_months_a[1].cantidad
+            month: last_months[1].mess,
+            a: last_months[1].aurora,
+            b: last_months[1].netsuite
         }, {
-            month: last_months_a[0].mess,
-            a: last_months_a[0].cantidad,
-            b: last_months_a[0].cantidad
+            month: last_months[0].mess,
+            a: last_months[0].aurora,
+            b: last_months[0].netsuite
         }],
         xkey: 'month',
         ykeys: ['a', 'b'],
@@ -59,60 +59,127 @@ function graphic_months_tra(last_months_a){
         resize: true
     });
 
+    $('#loading2').hide();
 }
 
-function graphic_months_line(last_months_a){
+function graphicCreateTran(last_months){
+
+    Morris.Line({
+        element: 'morris-create-transactions',
+       data: [{
+            y: last_months[11].mess,
+            a: last_months[11].aurora,
+            b: last_months[11].netsuite
+        }, {
+            y: last_months[10].mess,
+            a: last_months[10].aurora,
+            b: last_months[10].netsuite
+        }, {
+            y: last_months[9].mess,
+            a: last_months[9].aurora,
+            b: last_months[9].netsuite
+        }, { 
+            y: last_months[8].mess,
+            a: last_months[8].aurora,
+            b: last_months[8].netsuite
+        }, {
+            y: last_months[7].mess,
+            a: last_months[7].aurora,
+            b: last_months[7].netsuite
+        }, {
+            y: last_months[6].mess,
+            a: last_months[6].aurora,
+            b: last_months[6].netsuite
+        }, { 
+            y: last_months[5].mess,
+            a: last_months[5].aurora,
+            b: last_months[5].netsuite
+        }, {
+            y: last_months[4].mess,
+            a: last_months[4].aurora,
+            b: last_months[4].netsuite
+        }, {
+            y: last_months[3].mess,
+            a: last_months[3].aurora,
+            b: last_months[3].netsuite
+        }, {
+            y: last_months[2].mess,
+            a: last_months[2].aurora,
+            b: last_months[2].netsuite
+        }, {
+            y: last_months[1].mess,
+            a: last_months[1].aurora,
+            b: last_months[1].netsuite
+        }, {
+            y: last_months[0].mess,
+            a: last_months[0].aurora,
+            b: last_months[0].netsuite
+        }],
+        xkey: 'y',
+        ykeys: ['a', 'b'],
+        parseTime: false,
+        labels: ['AURORA', 'NETSUITE'],
+        lineColors: ["#1531B2", "#B21516"],
+        pointSize: 2,
+        hideHover: 'auto',
+        resize: true
+    });
+
+    $('#loading2').hide();
+}
+
+function graphicLastLine(last_months){
 
     Morris.Bar({
-        element: 'morris-bar-lines',
+        element: 'morris-last-lines',
         data: [{
-            month: last_months_a[11].mess,
-            a: last_months_a[11].cantidad,
-            b: last_months_a[11].cantidad
+            month: last_months[11].mess,
+            a: last_months[11].aurora,
+            b: last_months[11].netsuite
         }, {
-            month: last_months_a[10].mess,
-            a: last_months_a[10].cantidad,
-            b: last_months_a[10].cantidad
+            month: last_months[10].mess,
+            a: last_months[10].aurora,
+            b: last_months[10].netsuite
         }, {
-            month: last_months_a[9].mess,
-            a: last_months_a[9].cantidad,
-            b: last_months_a[9].cantidad
+            month: last_months[9].mess,
+            a: last_months[9].aurora,
+            b: last_months[9].netsuite
         }, { 
-            month: last_months_a[8].mess,
-            a: last_months_a[8].cantidad,
-            b: last_months_a[8].cantidad
+            month: last_months[8].mess,
+            a: last_months[8].aurora,
+            b: last_months[8].netsuite
         }, {
-            month: last_months_a[7].mess,
-            a: last_months_a[7].cantidad,
-            b: last_months_a[7].cantidad
+            month: last_months[7].mess,
+            a: last_months[7].aurora,
+            b: last_months[7].netsuite
         }, {
-            month: last_months_a[6].mess,
-            a: last_months_a[6].cantidad,
-            b: last_months_a[6].cantidad
+            month: last_months[6].mess,
+            a: last_months[6].aurora,
+            b: last_months[6].netsuite
         }, { 
-            month: last_months_a[5].mess,
-            a: last_months_a[5].cantidad,
-            b: last_months_a[5].cantidad
+            month: last_months[5].mess,
+            a: last_months[5].aurora,
+            b: last_months[5].netsuite
         }, {
-            month: last_months_a[4].mess,
-            a: last_months_a[4].cantidad,
-            b: last_months_a[4].cantidad
+            month: last_months[4].mess,
+            a: last_months[4].aurora,
+            b: last_months[4].netsuite
         }, {
-            month: last_months_a[3].mess,
-            a: last_months_a[3].cantidad,
-            b: last_months_a[3].cantidad
+            month: last_months[3].mess,
+            a: last_months[3].aurora,
+            b: last_months[3].netsuite
         }, {
-            month: last_months_a[2].mess,
-            a: last_months_a[2].cantidad,
-            b: last_months_a[2].cantidad
+            month: last_months[2].mess,
+            a: last_months[2].aurora,
+            b: last_months[2].netsuite
         }, {
-            month: last_months_a[1].mess,
-            a: last_months_a[1].cantidad,
-            b: last_months_a[1].cantidad
+            month: last_months[1].mess,
+            a: last_months[1].aurora,
+            b: last_months[1].netsuite
         }, {
-            month: last_months_a[0].mess,
-            a: last_months_a[0].cantidad,
-            b: last_months_a[0].cantidad
+            month: last_months[0].mess,
+            a: last_months[0].aurora,
+            b: last_months[0].netsuite
         }],
         xkey: 'month',
         ykeys: ['a', 'b'],
@@ -122,61 +189,128 @@ function graphic_months_line(last_months_a){
         resize: true
     });
 
+     $('#loading2').hide();
+}
+
+function graphicCreateLine(last_months){
+
+    Morris.Line({
+        element: 'morris-create-lines',
+        data: [{
+            y: last_months[11].mess,
+            a: last_months[11].aurora,
+            b: last_months[11].netsuite
+        }, {
+            y: last_months[10].mess,
+            a: last_months[10].aurora,
+            b: last_months[10].netsuite
+        }, {
+            y: last_months[9].mess,
+            a: last_months[9].aurora,
+            b: last_months[9].netsuite
+        }, { 
+            y: last_months[8].mess,
+            a: last_months[8].aurora,
+            b: last_months[8].netsuite
+        }, {
+            y: last_months[7].mess,
+            a: last_months[7].aurora,
+            b: last_months[7].netsuite
+        }, {
+            y: last_months[6].mess,
+            a: last_months[6].aurora,
+            b: last_months[6].netsuite
+        }, { 
+            y: last_months[5].mess,
+            a: last_months[5].aurora,
+            b: last_months[5].netsuite
+        }, {
+            y: last_months[4].mess,
+            a: last_months[4].aurora,
+            b: last_months[4].netsuite
+        }, {
+            y: last_months[3].mess,
+            a: last_months[3].aurora,
+            b: last_months[3].netsuite
+        }, {
+            y: last_months[2].mess,
+            a: last_months[2].aurora,
+            b: last_months[2].netsuite
+        }, {
+            y: last_months[1].mess,
+            a: last_months[1].aurora,
+            b: last_months[1].netsuite
+        }, {
+            y: last_months[0].mess,
+            a: last_months[0].aurora,
+            b: last_months[0].netsuite
+        }],
+        xkey: 'y',
+        ykeys: ['a', 'b'],
+        parseTime: false,
+        labels: ['AURORA', 'NETSUITE'],
+        lineColors: ["#1531B2", "#B21516"],
+        pointSize: 2,
+        hideHover: 'auto',
+        resize: true
+    });
+
+    $('#loading2').hide();
 }
 
 
-function graphic_months_link(last_months_a){
+function graphicLastLink(last_months){
 
     Morris.Bar({
-        element: 'morris-bar-links',
+        element: 'morris-last-links',
         data: [{
-            month: last_months_a[11].mess,
-            a: last_months_a[11].cantidad,
-            b: last_months_a[11].cantidad
+            month: last_months[11].mess,
+            a: last_months[11].aurora,
+            b: last_months[11].netsuite
         }, {
-            month: last_months_a[10].mess,
-            a: last_months_a[10].cantidad,
-            b: last_months_a[10].cantidad
+            month: last_months[10].mess,
+            a: last_months[10].aurora,
+            b: last_months[10].netsuite
         }, {
-            month: last_months_a[9].mess,
-            a: last_months_a[9].cantidad,
-            b: last_months_a[9].cantidad
+            month: last_months[9].mess,
+            a: last_months[9].aurora,
+            b: last_months[9].netsuite
         }, { 
-            month: last_months_a[8].mess,
-            a: last_months_a[8].cantidad,
-            b: last_months_a[8].cantidad
+            month: last_months[8].mess,
+            a: last_months[8].aurora,
+            b: last_months[8].netsuite
         }, {
-            month: last_months_a[7].mess,
-            a: last_months_a[7].cantidad,
-            b: last_months_a[7].cantidad
+            month: last_months[7].mess,
+            a: last_months[7].aurora,
+            b: last_months[7].netsuite
         }, {
-            month: last_months_a[6].mess,
-            a: last_months_a[6].cantidad,
-            b: last_months_a[6].cantidad
+            month: last_months[6].mess,
+            a: last_months[6].aurora,
+            b: last_months[6].netsuite
         }, { 
-            month: last_months_a[5].mess,
-            a: last_months_a[5].cantidad,
-            b: last_months_a[5].cantidad
+            month: last_months[5].mess,
+            a: last_months[5].aurora,
+            b: last_months[5].netsuite
         }, {
-            month: last_months_a[4].mess,
-            a: last_months_a[4].cantidad,
-            b: last_months_a[4].cantidad
+            month: last_months[4].mess,
+            a: last_months[4].aurora,
+            b: last_months[4].netsuite
         }, {
-            month: last_months_a[3].mess,
-            a: last_months_a[3].cantidad,
-            b: last_months_a[3].cantidad
+            month: last_months[3].mess,
+            a: last_months[3].aurora,
+            b: last_months[3].netsuite
         }, {
-            month: last_months_a[2].mess,
-            a: last_months_a[2].cantidad,
-            b: last_months_a[2].cantidad
+            month: last_months[2].mess,
+            a: last_months[2].aurora,
+            b: last_months[2].netsuite
         }, {
-            month: last_months_a[1].mess,
-            a: last_months_a[1].cantidad,
-            b: last_months_a[1].cantidad
+            month: last_months[1].mess,
+            a: last_months[1].aurora,
+            b: last_months[1].netsuite
         }, {
-            month: last_months_a[0].mess,
-            a: last_months_a[0].cantidad,
-            b: last_months_a[0].cantidad
+            month: last_months[0].mess,
+            a: last_months[0].aurora,
+            b: last_months[0].netsuite
         }],
         xkey: 'month',
         ykeys: ['a', 'b'],
@@ -186,8 +320,75 @@ function graphic_months_link(last_months_a){
         resize: true
     });
 
+    $('#loading2').hide();
+
 }
 
+function graphicCreateLink(last_months){
+
+    Morris.Line({
+        element: 'morris-create-links',
+        data: [{
+            y: last_months[11].mess,
+            a: last_months[11].aurora,
+            b: last_months[11].netsuite
+        }, {
+            y: last_months[10].mess,
+            a: last_months[10].aurora,
+            b: last_months[10].netsuite
+        }, {
+            y: last_months[9].mess,
+            a: last_months[9].aurora,
+            b: last_months[9].netsuite
+        }, { 
+            y: last_months[8].mess,
+            a: last_months[8].aurora,
+            b: last_months[8].netsuite
+        }, {
+            y: last_months[7].mess,
+            a: last_months[7].aurora,
+            b: last_months[7].netsuite
+        }, {
+            y: last_months[6].mess,
+            a: last_months[6].aurora,
+            b: last_months[6].netsuite
+        }, { 
+            y: last_months[5].mess,
+            a: last_months[5].aurora,
+            b: last_months[5].netsuite
+        }, {
+            y: last_months[4].mess,
+            a: last_months[4].aurora,
+            b: last_months[4].netsuite
+        }, {
+            y: last_months[3].mess,
+            a: last_months[3].aurora,
+            b: last_months[3].netsuite
+        }, {
+            y: last_months[2].mess,
+            a: last_months[2].aurora,
+            b: last_months[2].netsuite
+        }, {
+            y: last_months[1].mess,
+            a: last_months[1].aurora,
+            b: last_months[1].netsuite
+        }, {
+            y: last_months[0].mess,
+            a: last_months[0].aurora,
+            b: last_months[0].netsuite
+        }],
+        xkey: 'y',
+        ykeys: ['a', 'b'],
+        parseTime: false,
+        labels: ['AURORA', 'NETSUITE'],
+        lineColors: ["#1531B2", "#B21516"],
+        pointSize: 2,
+        hideHover: 'auto',
+        resize: true
+    });
+
+    $('#loading2').hide();
+}
 
 
 
@@ -229,10 +430,10 @@ function graphic_net_aur(aurora){
         element: 'morris-donut-chart1',
         data: [{
             label: "AURORA",
-            value: aurora.transactions
+            value: aurora[3].AURORA
         }, {
             label: "NETSUITE",
-            value: aurora.transactions
+            value: aurora[3].NETSUITE
         }],
         resize: true
     });
@@ -242,10 +443,10 @@ function graphic_net_aur(aurora){
         element: 'morris-donut-chart2',
         data: [{
             label: "AURORA",
-            value: aurora.tlines
+            value: aurora[4].AURORA
         }, {
             label: "NETSUITE",
-            value: aurora.tlines
+            value: aurora[4].NETSUITE
         }],
         resize: true
     });
@@ -254,10 +455,10 @@ function graphic_net_aur(aurora){
         element: 'morris-donut-chart3',
         data: [{
             label: "AURORA",
-            value: aurora.tlinks
+            value: aurora[5].AURORA
         }, {
             label: "NETSUITE",
-            value: aurora.tlinks
+            value: aurora[5].NETSUITE
         }],
         resize: true
     });

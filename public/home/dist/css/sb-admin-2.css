@@ -15,7 +15,7 @@ body {
 #page-wrapper {
     padding: 0 15px;
     min-height: 568px;
-    background: url('http://gazou.kizitora.jp/wp-content/uploads/2015/04/12644_wallpaper_2048x2048_iPad_Air_iPadminiRetina11.jpg') fixed center center;
+    
 }
 
 @media(min-width:768px) {
@@ -358,8 +358,14 @@ table.dataTable thead .sorting:after {
     color: #df8a13;
 }
 
+.panel-footer{
+    border-radius: 4px;
+    
+}
+
+
 .header-logo{
-    background: url('https://equipovision.com/static/design/i/logo.png')no-repeat center center;
+    background: url('/home/img/logo.png')no-repeat center center;
     width: 176px;
     height: 96px;
 }

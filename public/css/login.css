@@ -1,5 +1,5 @@
 body {
-    background: url('http://pic.4j4j.cn/upload/pic/20130417/854e2440f7.jpg') no-repeat fixed center center;
+    background: url('/home/img/back2.jpg') no-repeat fixed center center;
     background-size: cover;
     
 }
@@ -7,12 +7,13 @@ body {
 .logo {
     width: 198px;
     height: 127px;
-    background: url('https://equipovision.com/static/design/i/logo.png') no-repeat;
+    background: url('/home/img/logo.png') no-repeat;
     margin: 40px auto;
+    margin: 6% auto;
 }
 
 .login-block {
-    width: 320px;
+    width: 293px;
     padding: 20px;
     background: #fff;
     border-radius: 5px;
@@ -42,25 +43,7 @@ body {
     outline: none;
 }
 
-.login-block input#username {
-    background: #fff url('http://i.imgur.com/u0XmBmv.png') 20px top no-repeat;
-    background-size: 16px 80px;
-}
 
-.login-block input#username:focus {
-    background: #fff url('http://i.imgur.com/u0XmBmv.png') 20px bottom no-repeat;
-    background-size: 16px 80px;
-}
-
-.login-block input#password {
-    background: #fff url('http://i.imgur.com/Qf83FTt.png') 20px top no-repeat;
-    background-size: 16px 80px;
-}
-
-.login-block input#password:focus {
-    background: #fff url('http://i.imgur.com/Qf83FTt.png') 20px bottom no-repeat;
-    background-size: 16px 80px;
-}
 
 .login-block input:active, .login-block input:focus {
     border: 1px solid #ff656c;

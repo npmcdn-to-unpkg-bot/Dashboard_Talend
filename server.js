@@ -2,7 +2,6 @@
  * Module dependencies
 */
 var express  = require('express');
-var passport = require('passport');
 var flash    = require('connect-flash');
 var http = require('http');
 var path = path = require('path');
@@ -13,8 +12,6 @@ var port     = process.env.PORT || 3000;
 var ip     = process.env.IP || "localhost";
 
 var app = express();
-
-require('./config/passport')(passport); // pass passport for configuration
 
 
 //var netsuite = require('./config/netsuite/conecction');
@@ -38,15 +35,12 @@ app.configure(function() {
     app.use(express.urlencoded());
     //app.use(flash()); // use connect-flash for flash messages stored in session
 
-    //passport configuration
-    app.use(passport.initialize());
-    //app.use(passport.session());// persistent login sessions
     //provagg
     app.use(app.router); //init routing
 
 });
 var aurora = require('./config/aurora/conecction');
-require('./app/routes.js')(app, passport, aurora, netsuite); // load our routes and pass in our app and fully configured passport
+require('./app/routes.js')(app, aurora, netsuite); // load our routes and pass in our app and fully configured passport
 
 
 //express.vhost(vhost, app);

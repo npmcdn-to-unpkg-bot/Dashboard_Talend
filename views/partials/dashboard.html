@@ -2,53 +2,33 @@
 
     <div  class="container-fluid">
 
-        <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        
+
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">Equipo vision</a>
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">Equipo vision</a>
             </div>
-            <!-- /.navbar-header -->
 
-            <ul class="nav navbar-top-links navbar-right">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-user -->
-                </li>
-                <!-- /.dropdown -->
-            </ul>
-            <!-- /.navbar-top-links -->
-
-            <div class="navbar-default sidebar" role="navigation">
-                <div class="sidebar-nav navbar-collapse">
-                    <ul class="nav" id="side-menu">
-                        <li>
-                            <a href="#/dashboard"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- /.sidebar-collapse -->
-            </div>
-            <!-- /.navbar-static-side -->
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav navbar-right">
+                <li ><a class="fa fa-sign-out" ng-click="vm.logout()">Logout</a></li>
+              </ul>
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
         </nav>
+        <!-- Navigation -->
+        
 
-        <div id="page-wrapper">
+        <div id="">
             <div class="row">
                 <div class="col-lg-12">
                     <center><h1 class="header-logo"></h1>
@@ -67,16 +47,14 @@
                                     <i class="fa fa-list-alt fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">{{vm.transactions.transactions}}</div>
-                                    
+                                    <div class="huge">{{vm.transactions[3].AURORA.toLocaleString()}}</div>
                                 </div>
                             </div>
                         </div>
-                        <a ng-click='vm.GraphicTransactions()'>
+                        <a>
                             <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
+                                <button class="refresh" type='button' ng-click='vm.GraphicLastTran()'><i class="fa fa-retweet fa-1x"></i> Last modified</button>
+                                <button class="refresh pull-right" type='button' ng-click='vm.GraphicCreateTran()'><i class="fa fa-pencil fa-1x"></i> Create date</button> 
                             </div>
                         </a>
                     </div>
@@ -90,16 +68,14 @@
                                     <i class="fa fa-tasks fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">{{vm.transactions.tlines}}</div>
-                                    
+                                    <div class="huge">{{vm.transactions[4].AURORA.toLocaleString()}}</div>
                                 </div>
                             </div>
                         </div>
-                        <a ng-click='vm.GraphicLines()'>
+                        <a>
                             <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
+                                <button class="refresh" type='button' ng-click='vm.GraphicLastLines()'><i class="fa fa-retweet fa-1x"></i> Last modified</button>
+                                <button class="refresh pull-right" type='button' ng-click='vm.GraphicCreateLines()'><i class="fa fa-pencil fa-1x"></i> Create date</button>
                             </div>
                         </a>
                     </div>
@@ -113,15 +89,14 @@
                                     <i class="fa fa-align-justify fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">{{vm.transactions.tlinks}}</div>
+                                    <div class="huge">{{vm.transactions[5].AURORA.toLocaleString()}}</div>
                                 </div>
                             </div>
                         </div>
-                        <a ng-click='vm.GraphicLinks()'>
+                        <a>
                             <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
+                                <button class="refresh" type='button' ng-click='vm.GraphicLastLinks()'><i class="fa fa-retweet fa-1x"></i> Last modified</button>
+                                <button class="refresh pull-right" type='button' ng-click='vm.GraphicCreateLinks()'><i class="fa fa-pencil fa-1x"></i> Create date</button>
                             </div>
                         </a>
                     </div>
@@ -129,49 +104,89 @@
             </div>
             <!-- /.row -->
             <div class="row" >
-                <div ng-show='vm.graphicTran.show'>
+                <div id="loading2" >
+                    <center><img src="home/img/loading.gif"/></center>
+                </div>
+                <div ng-show='vm.graphicLastTran.show'>
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <i class="fa fa-bar-chart-o fa-fw"></i> TRANSACTIONS
+                                <center class="title-graph"><i class="fa fa-bar-chart-o fa-fw"></i>TRANSACTIONS <strong>(LAST MODIFIED)</strong></center>
                             </div>
                             <!-- /.panel-heading -->
                             <div class="panel-body">
-                                <div id="morris-bar-transactions"></div>
+                                <div id="morris-last-transactions"></div>
                             </div>
                             <!-- /.panel-body -->
                         </div>
                     </div>
                 </div>
-                <div ng-show='vm.graphicLines.show'>
+                <div ng-show='vm.graphicCreateTran.show'>
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <i class="fa fa-bar-chart-o fa-fw"></i> TRANSACTIONS LINES
+                                <center class="title-graph"><i class="fa fa-bar-chart-o fa-fw"></i>TRANSACTIONS <strong>(CREATE DATE)</strong></center>
                             </div>
                             <!-- /.panel-heading -->
                             <div class="panel-body">
-                                <div id="morris-bar-lines"></div>
+                                <div id="morris-create-transactions"></div>
                             </div>
                             <!-- /.panel-body -->
                         </div>
                     </div>
                 </div>
-
-                <div ng-show='vm.graphicLinks.show'>
+                <div ng-show='vm.graphicLastLines.show'>
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <i class="fa fa-bar-chart-o fa-fw"></i> TRANSACTIONS LINKS
+                                <center class="title-graph"><i class="fa fa-bar-chart-o fa-fw"></i>TRANSACTION LINES <strong>(LAST MODIFIED)</strong></center>
                             </div>
                             <!-- /.panel-heading -->
                             <div class="panel-body">
-                                <div id="morris-bar-links"></div>
+                                <div id="morris-last-lines"></div>
                             </div>
                             <!-- /.panel-body -->
                         </div>
                     </div>
                 </div>
+                <div ng-show='vm.graphicCreateLines.show'>
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <center class="title-graph"><i class="fa fa-bar-chart-o fa-fw"></i>TRANSACTION LINES <strong>(CREATE DATE)</strong></center>
+                            </div>
+                            <div class="panel-body">
+                                <div id="morris-create-lines"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ng-show='vm.graphicLastLinks.show'>
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <center class="title-graph"><i class="fa fa-bar-chart-o fa-fw"></i>TRANSACTION LINKS <strong>(LAST MODIFIED)</strong></center>
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div id="morris-last-links"></div>
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                    </div>
+                </div>
+                <div ng-show='vm.graphicCreateLinks.show'>
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <center class="title-graph"><i class="fa fa-bar-chart-o fa-fw"></i>TRANSACTION LINKS <strong>(CREATE DATE)</strong></center>
+                            </div>
+                            <div class="panel-body">
+                                <div id="morris-create-links"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
 
                 <div class="col-lg-8">
                     <!-- /.panel -->
@@ -196,6 +211,16 @@
                 </div>
                 <!-- /.col-lg-8 -->
                 <div class="col-lg-4" ng-model="vm.last_update">
+
+                    <div id="loading3" style="display: none">
+                        <center><img src="home/img/loading.gif" class="ajax-loader"/></center>
+                    </div>
+
+                    <div>
+                        <center>
+                            <button class="refresh" type='button' ng-click='vm.RefreshLastUpdate()'><i class="fa fa-repeat fa-2x"></i></button>
+                        </center>
+                    </div>
 
                     <div class="panel panel-primary">
                         <div class="panel-heading">
