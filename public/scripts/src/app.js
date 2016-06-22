@@ -1,4 +1,5 @@
 
+//Configuración de Angular para la utilización en los templates de la aplicación
 define([
     'angular',
     'angularRoute',
@@ -59,7 +60,7 @@ define([
         });
     });
 
-
+    // configuración de las dependencias de las rutas de la aplicación
     mainApp.config(['$routeProvider',
         function($routeProvider) {
 
@@ -89,7 +90,7 @@ define([
 
     ]);
 
-
+    // verifica si el usuario se encuentra logeado en caso contrario redirige a el login de la aplicación
     mainApp.run(['$rootScope','$location','AuthenticationService',function($rootScope, $location, AuthenticationService) {
         $rootScope.$on("$routeChangeStart", function(event, nextRoute, currentRoute) {
 

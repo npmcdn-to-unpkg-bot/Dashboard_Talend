@@ -1,9 +1,10 @@
 var request = require('request');
 
-module.exports = function(aurora, netsuite){
+module.exports = function(aurora){
 
     return {
 
+        //Función que permite el logeo de los usuarios utilizando una petición al servidor de equipo vision
         login:function(req,res)
         {
             if (req.body.username != null && req.body.password != null) {
@@ -63,6 +64,7 @@ module.exports = function(aurora, netsuite){
 
         },
 
+        //Cierra la sesión del usuario por medio de un token
         logout: function(req,res)
         {
             req.user.auth_token = null;
@@ -74,6 +76,7 @@ module.exports = function(aurora, netsuite){
             });
         },
 
+        //Obtiene el numero total de transacciones, lines, links de aurora y netsuite 
         getTransactions: function(req,res)
         {
             var query = "SELECT * FROM equipovision._SEV_DASHBOARD_RECORDS_SUMMARY;";
@@ -87,6 +90,7 @@ module.exports = function(aurora, netsuite){
             }, query);
         },
 
+        //Obtiene la información de los errores que se pueden presentar en la ejecución de job.
         getTransactionsLog: function(req,res)
         {
             var query = "SELECT * FROM"+ 
@@ -100,10 +104,10 @@ module.exports = function(aurora, netsuite){
                 "(SELECT count(*) AS warn_TLI FROM equipovision._SEV_TALEND_JOBS_LOG WHERE projectName = 'SEV_TRANSACTIONS_AND_LINES' AND jobName = 'TABLE_TRANSACTION_LINES' AND logLevel = 'WARN') AS warn_TLI,"+
                 "(SELECT count(*) AS error_TLI FROM equipovision._SEV_TALEND_JOBS_LOG WHERE projectName = 'SEV_TRANSACTIONS_AND_LINES' AND jobName = 'TABLE_TRANSACTION_LINES' AND logLevel = 'ERROR') AS error_TLI,"+
                 
-                "(SELECT sum(nSuccess) AS finished_TLK FROM equipovision._SEV_TALEND_JOBS_EXEC WHERE projectName = 'TRANSACTION_LINKS' AND jobName = 'SEV_TransactionLinks_v4' AND jobStatus = 'FINISHED') AS finished_TLK,"+ 
-                "(SELECT count(*) AS working_TLK FROM equipovision._SEV_TALEND_JOBS_EXEC WHERE projectName = 'TRANSACTION_LINKS' AND jobName = 'SEV_TransactionLinks_v4' AND jobStatus = 'WORKING') AS working_TLK,"+
-                "(SELECT count(*) AS warn_TLK FROM equipovision._SEV_TALEND_JOBS_LOG WHERE projectName = 'TRANSACTION_LINKS' AND jobName = 'SEV_TransactionLinks_v4' AND logLevel = 'WARN') AS warn_TLK,"+
-                "(SELECT count(*) AS error_TLK FROM equipovision._SEV_TALEND_JOBS_LOG WHERE projectName = 'TRANSACTION_LINKS' AND jobName = 'SEV_TransactionLinks_v4' AND logLevel = 'ERROR') AS error_TLK;";
+                "(SELECT sum(nSuccess) AS finished_TLK FROM equipovision._SEV_TALEND_JOBS_EXEC WHERE projectName = 'SEV_TRANSACTION_LINKS' AND jobName = 'TABLE_TRANSACTION_LINKS' AND jobStatus = 'FINISHED') AS finished_TLK,"+ 
+                "(SELECT count(*) AS working_TLK FROM equipovision._SEV_TALEND_JOBS_EXEC WHERE projectName = 'SEV_TRANSACTION_LINKS' AND jobName = 'TABLE_TRANSACTION_LINKS' AND jobStatus = 'WORKING') AS working_TLK,"+
+                "(SELECT count(*) AS warn_TLK FROM equipovision._SEV_TALEND_JOBS_LOG WHERE projectName = 'SEV_TRANSACTION_LINKS' AND jobName = 'TABLE_TRANSACTION_LINKS' AND logLevel = 'WARN') AS warn_TLK,"+
+                "(SELECT count(*) AS error_TLK FROM equipovision._SEV_TALEND_JOBS_LOG WHERE projectName = 'SEV_TRANSACTION_LINKS' AND jobName = 'TABLE_TRANSACTION_LINKS' AND logLevel = 'ERROR') AS error_TLK;";
             var transactions = aurora.runQuery( function(err, results) {
                 if (err)
                   throw err; // or return an error message, or something
@@ -114,6 +118,7 @@ module.exports = function(aurora, netsuite){
             }, query);
         },
 
+        ////Obtiene la fecha del ultimo registro en las tablas de transacciones, lines y links de la DB de Aurora
         getLastUpdate: function(req,res)
         {
             var query = "SELECT * FROM"+
@@ -130,6 +135,7 @@ module.exports = function(aurora, netsuite){
             }, query);
         },
 
+        //Obtiene las transacciones de los últimos 12 meses en base de la fecha de modificación de la DB deAurora
         getLastMonthsT: function(req,res)
         {
             var query = "SELECT concat(MONTH_NAME, '-', YEAR) AS mess, (AURORA_RECORDS) AS aurora,"+
@@ -146,7 +152,7 @@ module.exports = function(aurora, netsuite){
             }, query);
         },
 
-
+        ////Obtiene las transacciones de los últimos 12 meses en base de la fecha de creación de la DB deAurora
         getCreateMonthsT: function(req,res)
         {
             var query = "SELECT concat(MONTH_NAME, '-', YEAR) AS mess, (AURORA_RECORDS) AS aurora,"+
@@ -163,7 +169,7 @@ module.exports = function(aurora, netsuite){
             }, query);
         },
 
-
+        ////Obtiene los lines de los últimos 12 meses en base de la fecha de modificación de la DB deAurora
         getLastMonthsLN: function(req,res)
         {
             var query = "SELECT concat(MONTH_NAME, '-', YEAR) AS mess, (AURORA_RECORDS) AS aurora,"+
@@ -180,6 +186,7 @@ module.exports = function(aurora, netsuite){
             }, query);
         },
 
+        //Obtiene los links de los últimos 12 meses en base de la fecha de creación de la DB deAurora
         getCreateMonthsLN: function(req,res)
         {
             var query = "SELECT concat(MONTH_NAME, '-', YEAR) AS mess, (AURORA_RECORDS) AS aurora,"+
@@ -196,6 +203,7 @@ module.exports = function(aurora, netsuite){
             }, query);
         },
 
+        //Obtiene los links de los últimos 12 meses en base de la fecha de modificación de la DB deAurora
         getLastMonthsLK: function(req,res)
         {
             var query = "SELECT concat(MONTH_NAME, '-', YEAR) AS mess, (AURORA_RECORDS) AS aurora,"+
@@ -212,6 +220,7 @@ module.exports = function(aurora, netsuite){
             }, query);
         },
 
+        //Obtiene los links de los últimos 12 meses en base de la fecha de creación de la DB deAurora
         getCreateMonthsLK: function(req,res)
         {
             var query = "SELECT concat(MONTH_NAME, '-', YEAR) AS mess, (AURORA_RECORDS) AS aurora,"+

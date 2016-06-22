@@ -1,3 +1,5 @@
+
+//Realiza las peticiones al servidor para obtener la información y colocarla en el dashoard
 define(['angular'], function (angular) {
     'use strict';
 
@@ -33,6 +35,7 @@ define(['angular'], function (angular) {
             }
         };
 
+        //realiza la petición mediante el protocolo http al servidor 
         var _ajaxRequest = function(method, URL, data, key){
             $('#loading').show();
             var deferred = $q.defer();
@@ -50,39 +53,46 @@ define(['angular'], function (angular) {
         };
 
         return {
-            getPeople : function(refresh){
-                return _promisesGetter('GET','/api/people', null, "people", refresh);
-            },
+             //Obtiene el numero total de las transacciones, lines, links
             getTransactions : function(refresh){
                 return _promisesGetter('GET','/api/transactions', null, "transactions", refresh);
             },
+            //Obtiene el numero total de errores que se pudieron presentar
             getTransactionsLog : function(refresh){
                 return _promisesGetter('GET','/api/transactions_log', null, "transaction_log", refresh);
             },
+            //Consulta la ultima inserción del Job en las tablas de aurora
             getLastUpdate : function(refresh){
                 $("#loading3").show();
                 return _promisesGetter('GET','/api/last_update', null, "last_update", refresh);
             },
+            //Obtiene las transacciones de los últimos 12 meses en base de la fecha de modificación 
             getLastMonthsT : function(refresh){
                 return _promisesGetter('GET','/api/last_monthsT', null, "last_months_t", refresh);
             },
+            //Obtiene las transacciones de los últimos 12 meses en base de la fecha de creación
             getCreateMonthsT : function(refresh){
                 return _promisesGetter('GET','/api/create_monthsT', null, "create_months_t", refresh);
             },
+             //Obtiene los lines de los últimos 12 meses en base de la fecha de modificación 
             getLastMonthsLN : function(refresh){
                 return _promisesGetter('GET','/api/last_monthsLN', null, "last_months_ln", refresh);
             },
+            //Obtiene los lines de los últimos 12 meses en base de la fecha de creación 
             getCreateMonthsLN : function(refresh){
                 return _promisesGetter('GET','/api/create_monthsLN', null, "create_months_ln", refresh);
             },
+            //Obtiene los links de los últimos 12 meses en base de la fecha de modificación 
             getLastMonthsLK : function(refresh){
 
                 return _promisesGetter('GET','/api/last_monthsLK', null, "last_months_lk", refresh);
             },
+            //Obtiene los links de los últimos 12 meses en base de la fecha de creación 
             getCreateMonthsLK : function(refresh){
 
                 return _promisesGetter('GET','/api/create_monthsLK', null, "create_months_lk", refresh);
             },
+            //Ruta para el logeo de los usuarios 
             login : function(user){
                 return _ajaxRequest('POST', '/api/login', user, null);
             }
@@ -90,6 +100,7 @@ define(['angular'], function (angular) {
         }
     }
 
+    // Agrega un toque que permite a usuario acceder al dashboard 
     function TokenInterceptor($q, $location, localStorageService)
     {
         return {
@@ -118,7 +129,7 @@ define(['angular'], function (angular) {
         };
     }
 
-
+    // Verifica si el usuario esta logeado
     function AuthenticationService(localStorageService){
         return {
             isLogged: function()

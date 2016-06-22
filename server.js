@@ -1,5 +1,5 @@
 /**
- * Module dependencies
+ * Dependencias para el funcionamiento de la aplicación
 */
 var express  = require('express');
 var flash    = require('connect-flash');
@@ -14,13 +14,13 @@ var ip     = process.env.IP || "localhost";
 var app = express();
 
 
-//var netsuite = require('./config/netsuite/conecction');
-var netsuite = "Hola";
-//var q = aurora.runQuery('SELECT * FROM JOBS_CONTROL;');
+//Se agrega una variable que contiene la configuración de la conexión hacia aurora.
+var aurora = require('./config/aurora/conecction');
+
 
 
 app.configure(function() {
-    // set up our express application
+    // Se configuran los parámetros para express
     app.set('port', port);
     app.use(express.logger('dev')); // log every request to the console
     app.use(express.cookieParser()); // read cookies (needed for auth)
@@ -29,21 +29,19 @@ app.configure(function() {
     app.engine('.html', require('ejs').__express);
     app.set('views', __dirname + '/views');
     app.use(express.static(path.join(__dirname, 'public')));
-    //app.use(express.session({ secret: 'keyboard cat' }));// persistent login sessions
     app.use(express.methodOverride());
     app.use(express.json());
     app.use(express.urlencoded());
-    //app.use(flash()); // use connect-flash for flash messages stored in session
 
     //provagg
     app.use(app.router); //init routing
 
 });
-var aurora = require('./config/aurora/conecction');
-require('./app/routes.js')(app, aurora, netsuite); // load our routes and pass in our app and fully configured passport
+
+require('./app/routes.js')(app, aurora); // Lee las rutas que tiene la aplicación
 
 
-//express.vhost(vhost, app);
+//Se inicializa el servidor de Node JS
 
 var server = http.createServer(app).listen(app.get('port'), function () {
     console.log('Express server listening on port ' + vhost+":"+server.address().port);

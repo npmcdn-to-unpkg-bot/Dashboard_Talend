@@ -1,5 +1,5 @@
 
-
+//Creación de los controladores para la inserción de información en los templates
 define(['angular'], function (angular) {
     'use strict';
 
@@ -7,7 +7,7 @@ define(['angular'], function (angular) {
     mainAppControllers.controller('LoginCtrl', ['$location', 'ResourceService', 'localStorageService', 'toastr' ,LoginCtrl]);
     mainAppControllers.controller('DashboardCtrl', ['$location', 'ResourceService', 'data', 'toastr', 'localStorageService', DashboardCtrl]);
 
-
+    //Obtiene la información que se colocara en el dashboard 
     function DashboardCtrl($location, ResourceService, data, toastr, localStorageService){
         var vm = this;
         vm.$location = $location;
@@ -35,7 +35,8 @@ define(['angular'], function (angular) {
         $('#loading').hide();
     }
 
-    
+    //Obtiene las transacciones de los últimos 12 meses en base de la fecha de modificación
+    // e inserta en la grafica
     DashboardCtrl.prototype.GraphicLastTran = function (){
         $( "#morris-last-transactions" ).empty();
         $("#loading2").show();
@@ -55,6 +56,8 @@ define(['angular'], function (angular) {
         $('#loading').hide();
     };
 
+    //Obtiene las transacciones de los últimos 12 meses en base de la fecha de creación
+    // e inserta en la grafica
     DashboardCtrl.prototype.GraphicCreateTran = function (){
         $( "#morris-create-transactions" ).empty();
         $("#loading2").show();
@@ -74,6 +77,8 @@ define(['angular'], function (angular) {
         $('#loading').hide();
     };
 
+    //Obtiene los lines de los últimos 12 meses en base de la fecha de modificación
+    // e inserta en la grafica
     DashboardCtrl.prototype.GraphicLastLines = function (){
         $( "#morris-last-lines" ).empty();
         $("#loading2").show();
@@ -93,6 +98,8 @@ define(['angular'], function (angular) {
         $('#loading').hide();
     };
 
+    //Obtiene los lines de los últimos 12 meses en base de la fecha de creación
+    // e inserta en la grafica
     DashboardCtrl.prototype.GraphicCreateLines = function (){
         $( "#morris-create-lines" ).empty();
         $("#loading2").show();
@@ -112,6 +119,8 @@ define(['angular'], function (angular) {
         $('#loading').hide();
     };
 
+    //Obtiene los links de los últimos 12 meses en base de la fecha de modificación
+    // e inserta en la grafica
     DashboardCtrl.prototype.GraphicLastLinks = function (){
         $( "#morris-last-links" ).empty();
         $("#loading2").show();
@@ -131,6 +140,8 @@ define(['angular'], function (angular) {
         $('#loading').hide();
     };
 
+    //Obtiene los links de los últimos 12 meses en base de la fecha de creación
+    // e inserta en la grafica
     DashboardCtrl.prototype.GraphicCreateLinks = function (){
         $( "#morris-create-links" ).empty();
         $("#loading2").show();
@@ -150,12 +161,14 @@ define(['angular'], function (angular) {
         $('#loading').hide();
     };
 
+    // Realiza el fin se sesión del usuario en la aplicación
     DashboardCtrl.prototype.logout = function (){      
         var vm = this;
         vm.localStorageService.clearAll();
         vm.$location.path("/login");
     };
 
+    // obtiene las ultimas fechas de inserción en la base de datos
     DashboardCtrl.prototype.RefreshLastUpdate = function (){
         
         var vm = this;
@@ -169,6 +182,7 @@ define(['angular'], function (angular) {
         
     };
 
+    // Obtiene el usuario y la contraseña del template
     function LoginCtrl ($location, ResourceService, localStorageService, toastr)
     {
         var vm = this;
@@ -179,6 +193,7 @@ define(['angular'], function (angular) {
         vm.toastr = toastr;
     }
 
+    // Verifica si el usuario y la contraseña son las correctas
     LoginCtrl.prototype.login = function()
     {
         var vm = this;
