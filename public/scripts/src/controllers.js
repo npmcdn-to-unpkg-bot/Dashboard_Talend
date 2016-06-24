@@ -30,15 +30,12 @@ function insert_orange_color(secction){
 function range_hours(hour, hour_gmt, secction){
     var range = hour_gmt - hour;
     if(range < 1){
-        console.log("ENTREEEEEE____GREEN");
         insert_green_color(secction);
     }
     if(range > 1 && range < 4){
-        console.log("ENTREEEEEE____ORANGE");
         insert_orange_color(secction);
     }
     if(range > 3){
-        console.log("ENTREEEEEE____RED");
         insert_red_color(secction);
     }
 }
@@ -60,11 +57,9 @@ function live_jobs(date, secction){
 
     if(day_gmt < 7 && day_gmt != 1) {
         if(day_gmt == 6 && hour_gmt < 7){
-            console.log("ENTREEEEEE1111111")
             range_hours(hour, hour_gmt, secction);
         }
         if(day_gmt == 6 && hour_gmt > 6){
-            console.log("ENTREEEEEE222222")
             insert_blue_color(secction);
         }
         if(day_gmt != 6){
