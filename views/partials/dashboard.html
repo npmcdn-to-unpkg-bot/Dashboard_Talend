@@ -7,14 +7,14 @@
         <nav class="navbar navbar-default">
           <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
+            <div>
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#">Equipo vision</a>
+              <center><h3 class="navbar-title">Signature Equipo Vision - Data Migration Dashboard</h3></center>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -111,7 +111,7 @@
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <center class="title-graph"><i class="fa fa-bar-chart-o fa-fw"></i>TRANSACTIONS <strong>(LAST MODIFIED)</strong></center>
+                                <center class="title-graph"><i class="fa fa-bar-chart-o fa-fw"></i> TRANSACTIONS BY <strong> LAST MODIFIED</strong></center>
                             </div>
                             <!-- /.panel-heading -->
                             <div class="panel-body">
@@ -125,7 +125,7 @@
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <center class="title-graph"><i class="fa fa-bar-chart-o fa-fw"></i>TRANSACTIONS <strong>(CREATE DATE)</strong></center>
+                                <center class="title-graph"><i class="fa fa-bar-chart-o fa-fw"></i> TRANSACTIONS BY <strong>CREATE DATE</strong></center>
                             </div>
                             <!-- /.panel-heading -->
                             <div class="panel-body">
@@ -139,7 +139,7 @@
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <center class="title-graph"><i class="fa fa-bar-chart-o fa-fw"></i>TRANSACTION LINES <strong>(LAST MODIFIED)</strong></center>
+                                <center class="title-graph"><i class="fa fa-bar-chart-o fa-fw"></i> TRANSACTION LINES BY <strong>LAST MODIFIED</strong></center>
                             </div>
                             <!-- /.panel-heading -->
                             <div class="panel-body">
@@ -153,7 +153,7 @@
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <center class="title-graph"><i class="fa fa-bar-chart-o fa-fw"></i>TRANSACTION LINES <strong>(CREATE DATE)</strong></center>
+                                <center class="title-graph"><i class="fa fa-bar-chart-o fa-fw"></i> TRANSACTION LINES BY <strong>CREATE DATE</strong></center>
                             </div>
                             <div class="panel-body">
                                 <div id="morris-create-lines"></div>
@@ -165,7 +165,7 @@
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <center class="title-graph"><i class="fa fa-bar-chart-o fa-fw"></i>TRANSACTION LINKS <strong>(LAST MODIFIED)</strong></center>
+                                <center class="title-graph"><i class="fa fa-bar-chart-o fa-fw"></i> TRANSACTION LINKS BY <strong>LAST MODIFIED</strong></center>
                             </div>
                             <!-- /.panel-heading -->
                             <div class="panel-body">
@@ -179,7 +179,7 @@
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <center class="title-graph"><i class="fa fa-bar-chart-o fa-fw"></i>TRANSACTION LINKS <strong>(CREATE DATE)</strong></center>
+                                <center class="title-graph"><i class="fa fa-bar-chart-o fa-fw"></i> TRANSACTION LINKS BY <strong>CREATE DATE</strong></center>
                             </div>
                             <div class="panel-body">
                                 <div id="morris-create-links"></div>
@@ -192,7 +192,7 @@
                     <!-- /.panel -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> LOG
+                            <center class="title-graph"><i class="fa fa-bar-chart-o fa-fw"></i> JOBS TRACKING LOG</center>
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -211,18 +211,11 @@
                 </div>
                 <!-- /.col-lg-8 -->
                 <div class="col-lg-4" ng-model="vm.last_update">
-
-                    <div id="loading3" style="display: none">
-                        <center><img src="home/img/loading.gif" class="ajax-loader"/></center>
+                    <div class="panel panel-default">
+                        <center class="title-graph"><h4>JOB STATUS</h4></center>
                     </div>
 
-                    <div>
-                        <center>
-                            <button class="refresh" type='button' ng-click='vm.RefreshLastUpdate()'><i class="fa fa-repeat fa-2x"></i></button>
-                        </center>
-                    </div>
-
-                    <div class="panel panel-primary">
+                    <div id="transactions">
                         <div class="panel-heading">
                             <div class="row">
                                 <center><h3>TRANSACTIONS</h3></center>
@@ -236,7 +229,7 @@
                         </div>
                     </div>
 
-                    <div class="panel panel-green">
+                    <div id="lines">
                         <div class="panel-heading">
                             <div class="row">
                                 <center><h3>TRANSACTION LINES</h3></center>
@@ -250,7 +243,7 @@
                         </div>
                     </div>
 
-                    <div class="panel panel-red">
+                    <div id="links">
                         <div class="panel-heading">
                             <div class="row">
                                 <center><h3>TRANSACTION LINKS</h3></center>
@@ -270,10 +263,15 @@
 
                 <div class="col-lg-12">
                     <!-- /.panel -->
+        
+                        <div class="panel panel-default">
+                            <center class="title-graph"><h3>DATA MIGRATION STATUS AT {{vm.transactions[4].end_date}}</h3></center>
+                        </div>
+
                     <div class="col-lg-4 col-md-6">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <i class="fa fa-bar-chart-o fa-fw"></i> TRANSACTIONS
+                                <center class="title-graph"><i class="fa fa-bar-chart-o fa-fw"></i> TRANSACTIONS</center>
                             </div>
                             <div class="panel-body">
                                 <div id="morris-donut-chart1"></div>
@@ -284,7 +282,7 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <i class="fa fa-bar-chart-o fa-fw"></i> TRANSACTION LINES
+                                <center class="title-graph"><i class="fa fa-bar-chart-o fa-fw"></i> TRANSACTION LINES</center>
                             </div>
                             <div class="panel-body">
                                 <div id="morris-donut-chart2"></div>
@@ -295,7 +293,7 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <i class="fa fa-bar-chart-o fa-fw"></i> TRANSACTION LINKS
+                                <center class="title-graph"><i class="fa fa-bar-chart-o fa-fw"></i> TRANSACTION LINKS</center>
                             </div>
                             <div class="panel-body">
                                 <div id="morris-donut-chart3"></div>

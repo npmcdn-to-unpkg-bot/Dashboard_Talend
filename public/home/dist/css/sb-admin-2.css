@@ -18,6 +18,16 @@ body {
     
 }
 
+.navbar-title {
+    color: #006099;
+}
+
+@media (min-width:768px) {
+    .navbar-title {
+        margin-bottom: -35px !important;
+    }
+}
+
 @media(min-width:768px) {
     #page-wrapper {
         position: inherit;
@@ -321,6 +331,27 @@ table.dataTable thead .sorting:after {
 .panel-green a:hover {
     color: #3d8b3d;
 }
+
+
+.panel-orange {
+    border-color: #DA7C35;
+}
+
+.panel-orange .panel-heading {
+    border-color: #DA7C35;
+    color: #fff;
+    background-color: #DA7C35;
+}
+
+.panel-orange a {
+    color: #DA7C35;
+}
+
+.panel-orange a:hover {
+    color: #3d8b3d;
+}
+
+
 
 .panel-red {
     border-color: #d9534f;

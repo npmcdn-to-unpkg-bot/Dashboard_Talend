@@ -79,7 +79,7 @@ module.exports = function(aurora){
         //Obtiene el numero total de transacciones, lines, links de aurora y netsuite 
         getTransactions: function(req,res)
         {
-            var query = "SELECT * FROM equipovision._SEV_DASHBOARD_RECORDS_SUMMARY;";
+            var query = "SELECT *, (SELECT DATE_FORMAT(end_date, '%d-%m-%Y %H:%i:%s') FROM equipovision.JOBS_CONTROL WHERE job_name = 'SEV_DASHBOARD_DATA_MODIFIED') AS end_date FROM equipovision._SEV_DASHBOARD_RECORDS_SUMMARY;";
             var transactions = aurora.runQuery( function(err, results) {
                 if (err)
                   throw err; // or return an error message, or something
