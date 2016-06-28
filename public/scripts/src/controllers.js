@@ -3,7 +3,7 @@ function get_gmt_date(){
     var new_date = new Date();
     var gmt = new_date.toGMTString();
     var get_hours = gmt.split(" ");
-    var str_date = get_hours[3] + "-" + get_hours[2] + "-" + get_hours[1] + " " + get_hours[4];
+    var str_date = get_hours[3] + "/" + get_hours[2] + "/" + get_hours[1] + " " + get_hours[4];
     var new_da = new Date(str_date);
     var day = new_da.getDay();
     var hour_gmt = new_da.getHours();
@@ -28,8 +28,9 @@ function insert_orange_color(secction){
 
 
 function range_hours(hour, hour_gmt, secction){
+    
     var range = hour_gmt - hour;
-    if(range < 1){
+    if(range < 2){
         insert_green_color(secction);
     }
     if(range > 1 && range < 4){
@@ -42,10 +43,9 @@ function range_hours(hour, hour_gmt, secction){
 
 
 function live_jobs(date, secction){
-    
     var da = date.split(" ");
     var y = da[0].split("-");
-    var st_date = y[2] + "-" + y[1] + "-" + y[0] + " " + da[1];
+    var st_date = y[2] + "/" + y[1] + "/" + y[0] + " " + da[1];
     var new_date = new Date(st_date);
     var day = new_date.getDay();
     var hour = new_date.getHours();
@@ -53,7 +53,6 @@ function live_jobs(date, secction){
     var date_gmt = get_gmt_date();
     var hour_gmt = date_gmt[0];
     var day_gmt = date_gmt[1];
-    //var day_gmt = 1;
 
     if(day_gmt < 7 && day_gmt != 1) {
         if(day_gmt == 6 && hour_gmt < 7){
